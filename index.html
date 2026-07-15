@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Valtiq Digital — Websites, engineered.</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #0C0F16;
+      --ink-2: #12151F;
+      --ink-line: #242938;
+      --paper: #EFF1F6;
+      --paper-2: #E5E8F0;
+      --paper-line: #D3D8E4;
+      --signal: #4C5FFF;
+      --signal-soft: #4C5FFF22;
+      --text-dark: #E9EBF3;
+      --text-dark-muted: #8990A8;
+      --text-light: #12141C;
+      --text-light-muted: #5B6272;
+      --display: 'Space Grotesk', sans-serif;
+      --display-ar: 'Noto Naskh Arabic', serif;
+      --body: 'Inter', sans-serif;
+      --body-ar: 'IBM Plex Sans Arabic', sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+      --mono-ar: 'IBM Plex Sans Arabic', monospace;
+      --nav-height: 72px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--ink);
+      color: var(--text-dark);
+      font-family: var(--body);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    section { position: relative; overflow: hidden; }
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--signal);
+    }
+    .eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--signal);
+      display: inline-block;
+      border-radius: 1px;
+    }
+    .light .eyebrow { color: #3646C9; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: -.01em;
+      line-height: 1.08;
+    }
+
+    .services-line {
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+      opacity: 0.9;
+      margin: 8px 0 20px;
+    }
+    .services-line span { margin: 0 12px; opacity: 0.5; }
+
+    .coord {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dark-muted);
+      letter-spacing: .03em;
+    }
+    .light .coord { color: var(--text-light-muted); }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .03em;
+    }
+    .lang-btn {
+      background: none;
+      border: 1px solid transparent;
+      color: var(--text-dark-muted);
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all .2s;
+      font-family: inherit;
+    }
+    .lang-btn.active {
+      color: var(--text-dark);
+      border-color: var(--ink-line);
+      background: rgba(255,255,255,.04);
+    }
+    .lang-btn:hover { color: var(--text-dark); }
+    .lang-divider {
+      width: 1px; height: 14px;
+      background: var(--ink-line);
+    }
+
+    /* RTL Support */
+    html[dir="rtl"] body { font-family: var(--body-ar); }
+    html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4 {
+      font-family: var(--display-ar);
+      letter-spacing: 0;
+      line-height: 1.25;
+    }
+    html[dir="rtl"] .coord, html[dir="rtl"] .process-num, html[dir="rtl"] .eyebrow,
+    html[dir="rtl"] .nav-cta, html[dir="rtl"] .btn-primary, html[dir="rtl"] .btn-ghost,
+    html[dir="rtl"] .build-caption, html[dir="rtl"] .build-url, html[dir="rtl"] .marquee-track span,
+    html[dir="rtl"] footer .footer-bottom, html[dir="rtl"] .work-info span,
+    html[dir="rtl"] .testimonial cite, html[dir="rtl"] .footer-top h4, html[dir="rtl"] .lang-switcher {
+      font-family: var(--mono-ar);
+      letter-spacing: 0;
+    }
+    html[dir="rtl"] .eyebrow { flex-direction: row-reverse; }
+    html[dir="rtl"] .hero-ctas, html[dir="rtl"] .build-chrome, html[dir="rtl"] .build-caption,
+    html[dir="rtl"] .work-info, html[dir="rtl"] .section-head, html[dir="rtl"] nav.wrap { direction: rtl; }
+    html[dir="rtl"] .services-grid, html[dir="rtl"] .work-grid { direction: rtl; }
+    html[dir="rtl"] .process-list, html[dir="rtl"] .process-row { direction: rtl; }
+    html[dir="rtl"] .b-cursor svg { transform: scaleX(-1); }
+    html[dir="rtl"] .build-url { text-align: right; margin-left: 0; margin-right: 12px; }
+    html[dir="rtl"] .footer-top, html[dir="rtl"] .footer-bottom { direction: rtl; }
+    html[dir="rtl"] .testimonial blockquote { font-family: var(--display-ar); }
+    html[dir="rtl"] .logo { direction: ltr; }
+    html[dir="rtl"] .btn-primary, html[dir="rtl"] .btn-ghost { flex-direction: row-reverse; }
+    html[dir="rtl"] .modal .detail-list li { padding: 14px 24px 14px 0; }
+    html[dir="rtl"] .modal .detail-list li::before { left: auto; right: 0; }
+
+    /* ========== HEADER & NAV ========== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(12, 15, 22, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--ink-line);
+      height: var(--nav-height);
+    }
+    nav.wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      position: relative;
+    }
+    .logo {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      z-index: 102;
+    }
+    .logo-mark {
+      width: 20px; height: 20px;
+      border: 1.5px solid var(--signal);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .logo-mark::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      background: var(--signal);
+    }
+
+    /* Desktop nav group */
+    .nav-group {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-size: 14px;
+      color: var(--text-dark-muted);
+    }
+    .nav-links a {
+      transition: color .2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--text-dark); }
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .03em;
+      padding: 10px 18px;
+      border: 1px solid var(--signal);
+      color: var(--text-dark);
+      border-radius: 100px;
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--signal); }
+
+    /* Hamburger button */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 102;
+      flex-direction: column;
+      gap: 6px;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: calc(var(--nav-height) + 80px) 0 80px;
+      position: relative;
+      background: radial-gradient(600px 400px at 85% 10%, var(--signal-soft), transparent 60%), var(--ink);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 5.2vw, 68px);
+      margin: 20px 0 24px;
+    }
+    .hero h1 em { font-style: normal; color: var(--signal); }
+    .hero p.lede {
+      font-size: 17px;
+      color: var(--text-dark-muted);
+      max-width: 46ch;
+      margin-bottom: 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .03em;
+      background: var(--signal);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform .25s, box-shadow .25s;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(76, 95, 255, .35);
+    }
+    .btn-ghost {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-dark-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--ink-line);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { color: var(--text-dark); border-color: var(--text-dark-muted); }
+
+    /* Build Animation */
+    .build-frame {
+      border-radius: 14px;
+      background: var(--ink-2);
+      border: 1px solid var(--ink-line);
+      box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .6);
+      overflow: hidden;
+      width: 100%;
+    }
+    .build-chrome {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--ink-line);
+    }
+    .build-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #2C3143;
+    }
+    .build-url {
+      margin-left: 12px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dark-muted);
+      background: var(--ink);
+      padding: 5px 12px;
+      border-radius: 5px;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .build-stage {
+      position: relative;
+      height: 340px;
+      background: linear-gradient(var(--ink-line) 1px, transparent 1px) 0 0/28px 28px,
+                  linear-gradient(90deg, var(--ink-line) 1px, transparent 1px) 0 0/28px 28px,
+                  var(--ink);
+      opacity: 0;
+      animation: gridfade 9s ease-in-out infinite;
+      padding: 20px;
+    }
+    @keyframes gridfade {
+      0% { opacity: 0; } 6% { opacity: 1; } 92% { opacity: 1; } 100% { opacity: 0; }
+    }
+    .b-block {
+      position: absolute;
+      border: 1.5px dashed #3A4056;
+      background: transparent;
+      border-radius: 0;
+      opacity: 0;
+    }
+    .b-nav { top: 20px; left: 20px; right: 20px; height: 34px; animation: blockNav 9s ease infinite; }
+    .b-hero { top: 70px; left: 20px; width: 46%; height: 110px; animation: blockHero 9s ease infinite; }
+    .b-side { top: 70px; right: 20px; width: 38%; height: 110px; animation: blockSide 9s ease infinite; }
+    .b-card1 { top: 196px; left: 20px; width: 29%; height: 80px; animation: blockCard 9s ease infinite; }
+    .b-card2 { top: 196px; left: calc(20px + 32%); width: 29%; height: 80px; animation: blockCard 9s ease infinite; animation-delay: .15s; }
+    .b-card3 { top: 196px; right: 20px; width: 29%; height: 80px; animation: blockCard 9s ease infinite; animation-delay: .3s; }
+
+    @keyframes blockNav {
+      0%,5% { opacity: 0; border-style: dashed; }
+      12% { opacity: 1; }
+      30% { border-style: dashed; background: transparent; }
+      38% { border-style: solid; background: #161B29; border-color: var(--ink-line); border-radius: 6px; }
+      88% { opacity: 1; }
+      96%,100% { opacity: 0; }
+    }
+    @keyframes blockHero {
+      0%,10% { opacity: 0; }
+      17% { opacity: 1; }
+      36% { background: transparent; border-style: dashed; }
+      44% { background: linear-gradient(135deg,#1B2140,#141828); border-style: solid; border-color: var(--ink-line); border-radius: 8px; }
+      88% { opacity: 1; }
+      96%,100% { opacity: 0; }
+    }
+    @keyframes blockSide {
+      0%,13% { opacity: 0; }
+      20% { opacity: 1; }
+      36% { background: transparent; border-style: dashed; }
+      44% { background: #161B29; border-style: solid; border-color: var(--ink-line); border-radius: 8px; }
+      88% { opacity: 1; }
+      96%,100% { opacity: 0; }
+    }
+    @keyframes blockCard {
+      0%,16% { opacity: 0; }
+      23% { opacity: 1; }
+      36% { background: transparent; border-style: dashed; }
+      44% { background: #161B29; border-style: solid; border-color: var(--ink-line); border-radius: 8px; }
+      88% { opacity: 1; }
+      96%,100% { opacity: 0; }
+    }
+
+    .b-line {
+      position: absolute;
+      height: 6px;
+      background: #2C3143;
+      border-radius: 3px;
+      opacity: 0;
+      animation: lineIn 9s ease infinite;
+    }
+    @keyframes lineIn {
+      0%,44% { opacity: 0; transform: scaleX(.3); transform-origin: left; }
+      52% { opacity: 1; transform: scaleX(1); }
+      88% { opacity: 1; }
+      96%,100% { opacity: 0; }
+    }
+    .l1 { top: 82px; left: 32px; width: 36%; }
+    .l2 { top: 100px; left: 32px; width: 24%; background: var(--signal); animation-delay: .05s; }
+    .l3 { top: 208px; left: 32px; width: 18%; }
+    .l4 { top: 224px; left: 32px; width: 14%; }
+    .l5 { top: 208px; left: calc(32px + 32%); width: 18%; }
+    .l6 { top: 224px; left: calc(32px + 32%); width: 14%; }
+
+    .b-cursor {
+      position: absolute;
+      width: 14px; height: 14px;
+      opacity: 0;
+      animation: cursorMove 9s ease infinite;
+      z-index: 5;
+    }
+    @keyframes cursorMove {
+      0%,50% { opacity: 0; top: 260px; left: 60%; }
+      58% { opacity: 1; }
+      68% { top: 230px; left: 38%; }
+      72% { transform: scale(.82); }
+      76% { transform: scale(1); }
+      90% { opacity: 1; }
+      96%,100% { opacity: 0; }
+    }
+    .b-ripple {
+      position: absolute;
+      top: 224px; left: calc(32% + 12px);
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--signal);
+      opacity: 0;
+      animation: ripple 9s ease infinite;
+    }
+    @keyframes ripple {
+      0%,70% { opacity: 0; transform: scale(.4); }
+      73% { opacity: .9; }
+      85% { opacity: 0; transform: scale(2.6); }
+      100% { opacity: 0; }
+    }
+    .build-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-top: 1px solid var(--ink-line);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dark-muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .build-caption .dot-live {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      display: inline-block;
+      margin-right: 6px;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+    /* Marquee */
+    .marquee-section {
+      border-top: 1px solid var(--ink-line);
+      border-bottom: 1px solid var(--ink-line);
+      padding: 28px 0;
+      overflow: hidden;
+      background: var(--ink-2);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 64px;
+      width: max-content;
+      animation: scroll 26s linear infinite;
+    }
+    .marquee-track span {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .05em;
+      color: var(--text-dark-muted);
+      white-space: nowrap;
+    }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Sections */
+    .light { background: var(--paper); color: var(--text-light); }
+    .section-pad { padding: 100px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .section-head h2 { font-size: clamp(30px, 3.4vw, 44px); margin-top: 14px; }
+    .section-head p { font-size: 15px; color: var(--text-light-muted); max-width: 42ch; }
+    .dark .section-head p { color: var(--text-dark-muted); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--paper-line);
+      border-left: 1px solid var(--paper-line);
+    }
+    .service-card {
+      border-right: 1px solid var(--paper-line);
+      border-bottom: 1px solid var(--paper-line);
+      padding: 32px 28px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background .3s;
+      cursor: pointer;
+    }
+    .service-card:hover { background: var(--paper-2); }
+    .service-card h3 { font-size: 19px; margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--text-light-muted); }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 15, 22, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+      padding: 20px;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: var(--ink-2);
+      border: 1px solid var(--ink-line);
+      border-radius: 16px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--ink-line);
+      background: var(--ink);
+      color: var(--text-dark-muted);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+    }
+    .modal-close:hover { background: var(--signal); border-color: var(--signal); color: #fff; }
+    .modal h2 { font-size: 28px; margin-bottom: 20px; }
+    .modal .detail-list { margin-bottom: 28px; }
+    .modal .detail-list li {
+      padding: 14px 0 14px 24px;
+      border-bottom: 1px solid var(--ink-line);
+      font-size: 14.5px;
+      color: var(--text-dark-muted);
+      line-height: 1.6;
+      position: relative;
+    }
+    .modal .detail-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 20px;
+      width: 6px; height: 6px;
+      background: var(--signal);
+      border-radius: 1px;
+    }
+    .modal .detail-list li:last-child { border-bottom: none; }
+
+    /* Process */
+    .process { background: var(--ink); }
+    .process-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1.4fr;
+      gap: 32px;
+      padding: 36px 0;
+      border-top: 1px solid var(--ink-line);
+      align-items: start;
+    }
+    .process-list .process-row:last-child { border-bottom: 1px solid var(--ink-line); }
+    .process-num { font-family: var(--mono); font-size: 14px; color: var(--signal); }
+    .process-row h3 { font-size: 22px; }
+    .process-row p { font-size: 14.5px; color: var(--text-dark-muted); max-width: 56ch; }
+
+    /* Work */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .work-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--ink-2);
+      border: 1px solid var(--ink-line);
+      transition: transform .35s ease, border-color .35s ease;
+      cursor: pointer;
+      display: block;
+    }
+    .work-card:hover { transform: translateY(-6px); border-color: var(--signal); }
+    .work-thumb { height: 220px; padding: 18px; }
+    .work-thumb .mini-nav { height: 14px; border-radius: 3px; margin-bottom: 10px; }
+    .work-thumb .mini-hero { height: 70px; border-radius: 6px; margin-bottom: 10px; }
+    .work-thumb .mini-row { display: flex; gap: 8px; }
+    .work-thumb .mini-card { flex: 1; height: 44px; border-radius: 5px; }
+    .work-info {
+      padding: 22px 24px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid var(--ink-line);
+    }
+    .work-info h3 { font-size: 18px; margin-bottom: 6px; }
+    .work-info span { font-family: var(--mono); font-size: 11px; color: var(--text-dark-muted); }
+    .work-arrow {
+      width: 34px; height: 34px;
+      border: 1px solid var(--ink-line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .3s;
+      flex-shrink: 0;
+    }
+    .work-card:hover .work-arrow { background: var(--signal); border-color: var(--signal); }
+
+    .theme-solace .mini-nav { background:#2B3654; }
+    .theme-solace .mini-hero { background:linear-gradient(135deg,#3E4E86,#232B47); }
+    .theme-solace .mini-card { background:#232B47; }
+    .theme-marrow .mini-nav { background:#4A3626; }
+    .theme-marrow .mini-hero { background:linear-gradient(135deg,#8A5A34,#3B2A1E); }
+    .theme-marrow .mini-card { background:#3B2A1E; }
+    .theme-northbeam .mini-nav { background:#1F2A2C; }
+    .theme-northbeam .mini-hero { background:linear-gradient(135deg,#1E5C56,#122423); }
+    .theme-northbeam .mini-card { background:#122423; }
+    .theme-auger .mini-nav { background:#2E2A3C; }
+    .theme-auger .mini-hero { background:linear-gradient(135deg,#5B4E8C,#241F35); }
+    .theme-auger .mini-card { background:#241F35; }
+
+    /* Testimonial */
+    .testimonial {
+      background: var(--paper);
+      color: var(--text-light);
+      padding: 120px 0;
+      text-align: center;
+    }
+    .testimonial blockquote {
+      font-family: var(--display);
+      font-size: clamp(24px, 3.2vw, 36px);
+      font-weight: 500;
+      max-width: 820px;
+      margin: 0 auto 32px;
+      line-height: 1.35;
+    }
+    .testimonial cite {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-light-muted);
+      font-style: normal;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--ink);
+      padding: 120px 0;
+      text-align: center;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(500px 300px at 50% 0%, var(--signal-soft), transparent 70%);
+    }
+    .cta-section h2 {
+      font-size: clamp(32px, 5vw, 58px);
+      max-width: 16ch;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+    .cta-section .btn-primary { position: relative; font-size: 14px; padding: 16px 30px; }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid var(--ink-line);
+      padding: 64px 0 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 56px;
+    }
+    .footer-top h4 {
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-dark-muted);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+    .footer-top ul li { margin-bottom: 10px; font-size: 14px; }
+    .footer-top ul a { color: var(--text-dark-muted); transition: color .2s; }
+    .footer-top ul a:hover { color: var(--text-dark); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid var(--ink-line);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dark-muted);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero-grid { gap: 40px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-row { grid-template-columns: 60px 1fr 1.2fr; gap: 20px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --nav-height: 64px; }
+      .wrap { padding: 0 20px; }
+
+      /* Mobile Navigation */
+      .nav-toggle { display: flex; }
+
+      .nav-group {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--ink-2);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 32px 32px;
+        gap: 0;
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 99;
+        overflow-y: auto;
+        border-top: 1px solid var(--ink-line);
+        display: flex;
+      }
+      html[dir="rtl"] .nav-group {
+        transform: translateX(-100%);
+      }
+      .nav-group.active {
+        transform: translateX(0);
+      }
+
+      /* Mobile nav links - two clickable titles in three lines */
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+      
+      /* First line: Work & Services */
+      .nav-links .nav-line-1 {
+        display: flex;
+        gap: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-links .nav-line-1 a {
+        flex: 1;
+        text-align: center;
+        color: var(--text-dark);
+        padding: 12px 8px;
+        background: rgba(255,255,255,0.03);
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        font-size: 18px;
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-links .nav-line-1 a:hover,
+      .nav-links .nav-line-1 a:active {
+        background: rgba(76, 95, 255, 0.15);
+        border-color: var(--signal);
+        color: var(--signal);
+      }
+      
+      /* Second line: Process & Contact */
+      .nav-links .nav-line-2 {
+        display: flex;
+        gap: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-links .nav-line-2 a {
+        flex: 1;
+        text-align: center;
+        color: var(--text-dark);
+        padding: 12px 8px;
+        background: rgba(255,255,255,0.03);
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        font-size: 18px;
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-links .nav-line-2 a:hover,
+      .nav-links .nav-line-2 a:active {
+        background: rgba(76, 95, 255, 0.15);
+        border-color: var(--signal);
+        color: var(--signal);
+      }
+
+      .lang-switcher {
+        justify-content: center;
+        padding: 24px 0;
+        border-top: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        margin: 0 0 24px 0;
+      }
+      .lang-btn { 
+        font-size: 16px; 
+        padding: 10px 20px;
+        font-weight: 500;
+      }
+
+      .nav-cta {
+        text-align: center;
+        display: block;
+        padding: 18px;
+        font-size: 16px;
+        font-weight: 600;
+        background: var(--signal);
+        border-radius: 100px;
+        margin-top: 8px;
+      }
+
+      /* Hero */
+      .hero { padding: calc(var(--nav-height) + 40px) 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: clamp(32px, 7vw, 46px); }
+      .hero p.lede { font-size: 15px; }
+      .services-line { font-size: 12px; }
+      .services-line span { margin: 0 8px; }
+
+      /* Sections */
+      .section-head { grid-template-columns: 1fr; gap: 16px; }
+      .section-pad { padding: 60px 0; }
+
+      /* Work */
+      .work-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+
+      /* Process */
+      .process-row {
+        grid-template-columns: 40px 1fr;
+        grid-template-areas: "num title" "num text";
+        gap: 12px;
+        padding: 28px 0;
+      }
+      .process-num { grid-area: num; }
+      .process-row h3 { grid-area: title; font-size: 20px; }
+      .process-row p { grid-area: text; }
+      .process-row > div:not(.process-num) { grid-area: title; }
+
+      /* Footer */
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      /* Modal */
+      .modal { padding: 28px 20px; }
+      .modal h2 { font-size: 22px; }
+
+      /* Build */
+      .build-stage { height: 240px; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 0 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-ghost { width: 100%; justify-content: center; text-align: center; }
+      .build-caption { font-size: 10px; }
+      .process-row { grid-template-columns: 1fr; grid-template-areas: "num" "title" "text"; gap: 8px; }
+      .testimonial { padding: 80px 0; }
+      .cta-section { padding: 80px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .build-stage, .b-block, .b-line, .b-cursor, .b-ripple, .dot-live, .marquee-track {
+        animation: none !important;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-menu-overlay" id="mobileOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:98;"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="logo-mark"></span>Valtiq Digital</div>
+    
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-group" id="navGroup">
+      <!-- Navigation Links -->
+      <div class="nav-links">
+        <!-- First line: Work & Services -->
+        <div class="nav-line-1">
+          <a href="#work" data-i18n="nav.work">Work</a>
+          <a href="#services" data-i18n="nav.services">Services</a>
+        </div>
+        <!-- Second line: Process & Contact -->
+        <div class="nav-line-2">
+          <a href="#process" data-i18n="nav.process">Process</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+      </div>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en" aria-label="Switch to English">English</button>
+        <span class="lang-divider"></span>
+        <button class="lang-btn" data-lang="ar" aria-label="التبديل إلى العربية">العربية</button>
+      </div>
+
+      <!-- CTA Button -->
+      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Start a project</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" data-i18n="hero.eyebrow">Web design &amp; engineering studio</span>
+        <h1><span data-i18n="hero.title1">From vision to </span><em data-i18n="hero.titleEm"> digital success.</em></h1>
+        <p class="lede" data-i18n="hero.lede">Valtiq Digital designs and builds websites for teams who treat their site like a flagship product — researched, drafted, tested, and shipped with the same discipline as anything else you'd stake your name on.</p>
+        <div class="services-line">DESIGN <span>|</span> DEVELOPMENT <span>|</span> GROWTH</div>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Start a project →</a>
+          <a href="#work" class="btn-ghost" data-i18n="hero.cta2">See the work</a>
+        </div>
+      </div>
+      <div class="build-frame reveal in">
+        <div class="build-chrome">
+          <span class="build-dot"></span><span class="build-dot"></span><span class="build-dot"></span>
+          <span class="build-url">valtiq.studio/build — <span data-i18n="build.live">live</span></span>
+        </div>
+        <div class="build-stage">
+          <div class="b-block b-nav"></div>
+          <div class="b-block b-hero"></div>
+          <div class="b-block b-side"></div>
+          <div class="b-block b-card1"></div>
+          <div class="b-block b-card2"></div>
+          <div class="b-block b-card3"></div>
+          <div class="b-line l1"></div>
+          <div class="b-line l2"></div>
+          <div class="b-line l3"></div>
+          <div class="b-line l4"></div>
+          <div class="b-line l5"></div>
+          <div class="b-line l6"></div>
+          <div class="b-ripple"></div>
+          <div class="b-cursor">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 3l16 7-6.5 2.5L11 19 4 3z" fill="#E9EBF3" stroke="#0C0F16" stroke-width="1"/></svg>
+          </div>
+        </div>
+        <div class="build-caption">
+          <span><span class="dot-live"></span><span data-i18n="build.rendering">Rendering in real time</span></span>
+          <span>1440 × 900</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span>BUSINESS WEBSITES</span><span>E-COMMERCE STORES</span><span>SAAS PLATFORMS</span><span>LANDING PAGES</span><span>PORTFOLIO WEBSITES</span><span>BOOKING SYSTEMS</span>
+      <span>BUSINESS WEBSITES</span><span>E-COMMERCE STORES</span><span>SAAS PLATFORMS</span><span>LANDING PAGES</span><span>PORTFOLIO WEBSITES</span><span>BOOKING SYSTEMS</span>
+    </div>
+  </div>
+
+  <section class="light section-pad" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="services.eyebrow">What we do</span>
+        <div>
+          <h2 data-i18n="services.title">One partner. Every website you need</h2>
+          <p data-i18n="services.desc">From business websites to e-commerce stores, portfolios, and booking platforms—we build digital experiences that help your business succeed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card" data-service="business">
+        <span class="coord">X:001 / <span data-i18n="services.s1.coord">BUSINESS</span></span>
+        <div>
+          <h3 data-i18n="services.s1.title">Business Websites</h3>
+          <p data-i18n="services.s1.desc">Professional websites that establish credibility, showcase your services, and help your business grow online.</p>
+        </div>
+      </div>
+      <div class="service-card" data-service="ecommerce">
+        <span class="coord">X:002 / <span data-i18n="services.s2.coord">E-COMMERCE</span></span>
+        <div>
+          <h3 data-i18n="services.s2.title">E-Commerce Stores</h3>
+          <p data-i18n="services.s2.desc">Modern online stores with secure payments, fast performance, and a seamless shopping experience.</p>
+        </div>
+      </div>
+      <div class="service-card" data-service="portfolio">
+        <span class="coord">X:003 / <span data-i18n="services.s3.coord">PORTFOLIO</span></span>
+        <div>
+          <h3 data-i18n="services.s3.title">Portfolio Websites</h3>
+          <p data-i18n="services.s3.desc">Showcase your work, projects, and achievements with a clean and professional portfolio.</p>
+        </div>
+      </div>
+      <div class="service-card" data-service="booking">
+        <span class="coord">X:004 / <span data-i18n="services.s4.coord">BOOKING</span></span>
+        <div>
+          <h3 data-i18n="services.s4.title">Booking & Service Websites</h3>
+          <p data-i18n="services.s4.desc">Enable customers to book appointments, request services, and connect with your business easily.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="serviceModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <span class="coord" id="modalCoord">X:001 / BUSINESS</span>
+      <h2 id="modalTitle">Business Websites</h2>
+      <ul class="detail-list" id="modalDetails"></ul>
+      <a href="#" class="btn-primary" id="modalExample" target="_blank" rel="noopener noreferrer">View Example ↗</a>
+    </div>
+  </div>
+
+  <section class="process section-pad" id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="process.eyebrow">How a project runs</span>
+        <div>
+          <h2 data-i18n="process.title">From idea to launch.</h2>
+          <p data-i18n="process.desc">Every project follows a clear process to ensure quality, performance, and a successful launch.</p>
+        </div>
+      </div>
+      <div class="process-list">
+        <div class="process-row reveal"><span class="process-num">01</span><div><h3 data-i18n="process.p1.title">Discovery</h3></div><p data-i18n="process.p1.desc">We learn about your business, goals, and target audience to understand exactly what your website needs to achieve.</p></div>
+        <div class="process-row reveal"><span class="process-num">02</span><div><h3 data-i18n="process.p2.title">Planing</h3></div><p data-i18n="process.p2.desc">We define the website structure, user journey, and content strategy before development begins.</p></div>
+        <div class="process-row reveal"><span class="process-num">03</span><div><h3 data-i18n="process.p3.title">Design</h3></div><p data-i18n="process.p3.desc">We create a modern, user-focused design that reflects your brand and delivers an outstanding user experience.</p></div>
+        <div class="process-row reveal"><span class="process-num">04</span><div><h3 data-i18n="process.p4.title">Development</h3></div><p data-i18n="process.p4.desc">Your website is built using modern technologies with a focus on speed, security, and responsiveness.</p></div>
+        <div class="process-row reveal"><span class="process-num">05</span><div><h3 data-i18n="process.p5.title">Launch & Support</h3></div><p data-i18n="process.p5.desc">After testing, your website goes live. We continue to provide support, updates, and improvements when needed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="work" style="background:var(--ink);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="work.eyebrow">Selected work</span>
+        <div><h2 data-i18n="work.title">Recent builds.</h2><p data-i18n="work.desc">A small set of the sites we've designed and shipped end to end.</p></div>
+      </div>
+      <div class="work-grid">
+        <a href="https://abjawad.github.io/hussein/" target="_blank" rel="noopener noreferrer" class="work-card reveal theme-solace">
+          <div class="work-thumb"><div class="mini-nav"></div><div class="mini-hero"></div><div class="mini-row"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div></div>
+          <div class="work-info"><div><h3>Solace Clinics</h3><span>HEALTHCARE — BOOKING PLATFORM</span></div><span class="work-arrow">↗</span></div>
+        </a>
+        <a href="https://abjawad.github.io/websites/#work" target="_blank" rel="noopener noreferrer" class="work-card reveal theme-marrow">
+          <div class="work-thumb"><div class="mini-nav"></div><div class="mini-hero"></div><div class="mini-row"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div></div>
+          <div class="work-info"><div><h3>BUSINESS WEBSITES</h3><span>E-COMMERCE STORES</span></div><span class="work-arrow">↗</span></div>
+        </a>
+        <a href="https://abjawad.github.io/websites/#work" target="_blank" rel="noopener noreferrer" class="work-card reveal theme-northbeam">
+          <div class="work-thumb"><div class="mini-nav"></div><div class="mini-hero"></div><div class="mini-row"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div></div>
+          <div class="work-info"><div><h3>SAAS PLATFORMS</h3><span>LANDING PAGES</span></div><span class="work-arrow">↗</span></div>
+        </a>
+        <a href="https://abjawad.github.io/websites/#work" target="_blank" rel="noopener noreferrer" class="work-card reveal theme-auger">
+          <div class="work-thumb"><div class="mini-nav"></div><div class="mini-hero"></div><div class="mini-row"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div></div>
+          <div class="work-info"><div><h3>WEBSITES</h3><span>WEB APPLICATIONS</span></div><span class="work-arrow">↗</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <div class="wrap reveal">
+      <blockquote data-i18n="testimonial.quote">"A website is more than beautiful design—it's an investment in the future of a business. That's why we build websites that combine performance, reliability, and brand identity to create lasting impact."</blockquote>
+      <cite data-i18n="testimonial.cite">— Jawad Abdine, Founder of Valtiq Digital</cite>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <div class="wrap reveal">
+      <span class="eyebrow" data-i18n="cta.eyebrow">Let's build your digital presence.</span>
+      <h2 data-i18n="cta.title">Tell us what your business needs, and we will provide a clear plan to build a website that reflects your brand.</h2>
+      <a href="https://wa.me/96181978571" class="btn-primary">CONTACT US →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo" style="margin-bottom:14px;"><span class="logo-mark"></span>Valtiq Digital</div>
+        <p style="font-size:14px;color:var(--text-dark-muted);max-width:32ch;" data-i18n="footer.desc">A small studio designing and building websites for teams who care how theirs feels.</p>
+      </div>
+      <div><h4 data-i18n="footer.col1">Studio</h4><ul><li><a href="#work" data-i18n="footer.work">Work</a></li><li><a href="#services" data-i18n="footer.services">Services</a></li><li><a href="#process" data-i18n="footer.process">Process</a></li></ul></div>
+      <div><h4 data-i18n="footer.col2">Connect</h4><ul><li><a href="mailto:hello@valtiq.studio" data-i18n="footer.email">Email</a></li><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+      <div><h4 data-i18n="footer.col3">Studio hours</h4><ul><li style="color:var(--text-dark-muted);" data-i18n="footer.hours">Mon–Fri, 9:00–18:00</li><li style="color:var(--text-dark-muted);">Beirut, LB</li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VALTIQ DIGITAL. <span data-i18n="footer.rights">ALL RIGHTS RESERVED.</span></span>
+      <p style="margin:0;">Designed & Developed by Jawad Abdine</p>
+      <span data-i18n="footer.grid">BUILT ON A 12-COLUMN GRID.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // Hamburger menu functionality
+  const navToggle = document.getElementById('navToggle');
+  const navGroup = document.getElementById('navGroup');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  function openMenu() {
+    navGroup.classList.add('active');
+    navToggle.classList.add('active');
+    mobileOverlay.style.display = 'block';
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    navGroup.classList.remove('active');
+    navToggle.classList.remove('active');
+    mobileOverlay.style.display = 'none';
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  navToggle.addEventListener('click', function() {
+    if (navGroup.classList.contains('active')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  mobileOverlay.addEventListener('click', closeMenu);
+
+  // Close menu when a link inside is clicked
+  navGroup.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        closeMenu();
+      }
+    });
+  });
+
+  // Reset menu on window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      closeMenu();
+    }
+  });
+
+  // Close menu with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && navGroup.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+
+  // Service Modal
+  const serviceData = {
+    en: {
+      business: { coord: 'X:001 / BUSINESS', title: 'Business Websites', details: ['Custom design tailored to your brand identity.','Responsive layouts for all devices.','SEO-optimized structure.','Fast-loading pages.','Integrated contact forms and CMS.','Analytics setup included.'], example: 'https://example.com/business' },
+      ecommerce: { coord: 'X:002 / E-COMMERCE', title: 'E-Commerce Stores', details: ['Complete online store setup.','Secure payment gateways.','Optimized product pages.','Mobile-first shopping experience.','Order tracking and notifications.','Performance optimized.'], example: 'https://example.com/ecommerce' },
+      portfolio: { coord: 'X:003 / PORTFOLIO', title: 'Portfolio Websites', details: ['Visually-driven layouts.','Custom project pages.','Filterable portfolio grids.','Smooth animations.','Personal branding sections.','Blog integration.'], example: 'https://example.com/portfolio' },
+      booking: { coord: 'X:004 / BOOKING', title: 'Booking & Service Websites', details: ['Online scheduling system.','Service menus with pricing.','Automated reminders.','Customer portal.','Staff management dashboard.','Calendar integration.'], example: 'https://abjawad.github.io/hussein/' }
+    },
+    ar: {
+      business: { coord: 'X:001 / مواقع الشركات', title: 'مواقع الشركات', details: ['تصميم مخصص يعكس هويتك.','تخطيطات متجاوبة.','هيكل محسّن لمحركات البحث.','صفحات سريعة التحميل.','نماذج اتصال ونظام إدارة محتوى.','إعداد أدوات التحليلات.'], example: 'https://example.com/business' },
+      ecommerce: { coord: 'X:002 / المتاجر الإلكترونية', title: 'المتاجر الإلكترونية', details: ['إعداد متجر متكامل.','بوابات دفع آمنة.','صفحات منتجات محسّنة.','تجربة تسوق للجوال.','تتبع الطلبات والإشعارات.','أداء محسّن.'], example: 'https://example.com/ecommerce' },
+      portfolio: { coord: 'X:003 / معرض الأعمال', title: 'مواقع معرض الأعمال', details: ['تخطيطات بصرية جذابة.','صفحات مشاريع مخصصة.','شبكات قابلة للتصفية.','حركات سلسة.','أقسام العلامة الشخصية.','مدونة متكاملة.'], example: 'https://example.com/portfolio' },
+      booking: { coord: 'X:004 / الحجز والخدمات', title: 'مواقع الحجز والخدمات', details: ['نظام حجز مواعيد.','قوائم خدمات وأسعار.','تذكيرات تلقائية.','بوابة للعملاء.','لوحة تحكم للموظفين.','تكامل مع التقويم.'], example: 'https://abjawad.github.io/hussein/' }
+    }
+  };
+
+  const modal = document.getElementById('serviceModal');
+  const modalClose = document.getElementById('modalClose');
+  const modalCoord = document.getElementById('modalCoord');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDetails = document.getElementById('modalDetails');
+  const modalExample = document.getElementById('modalExample');
+
+  function openServiceModal(type) {
+    const lang = document.documentElement.lang || 'en';
+    const data = (serviceData[lang] && serviceData[lang][type]) ? serviceData[lang][type] : serviceData['en'][type];
+    if (!data) return;
+    modalCoord.textContent = data.coord;
+    modalTitle.textContent = data.title;
+    modalExample.href = data.example;
+    modalExample.textContent = lang === 'ar' ? 'شاهد مثالاً ←' : 'View Example ↗';
+    modalDetails.innerHTML = data.details.map(function(d) { return '<li>' + d + '</li>'; }).join('');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.service-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      if (card.dataset.service) openServiceModal(card.dataset.service);
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+
+  // i18n
+  const i18n = {
+    en: {
+      'nav.work':'Work','nav.services':'Services','nav.process':'Process','nav.contact':'Contact','nav.cta':'Start a project',
+      'hero.eyebrow':'Web design & engineering studio','hero.title1':'From vision to','hero.titleEm':'digital success.',
+      'hero.lede':"Valtiq Digital designs and builds websites for teams who treat their site like a flagship product — researched, drafted, tested, and shipped with the same discipline as anything else you'd stake your name on.",
+      'hero.cta1':'Start a project →','hero.cta2':'See the work','build.live':'live','build.rendering':'Rendering in real time',
+      'services.eyebrow':'What we do','services.title':'One partner. Every website you need','services.desc':'From business websites to e-commerce stores, portfolios, and booking platforms—we build digital experiences that help your business succeed.',
+      'services.s1.coord':'BUSINESS','services.s1.title':'Business Websites','services.s1.desc':'Professional websites that establish credibility, showcase your services, and help your business grow online.',
+      'services.s2.coord':'E-COMMERCE','services.s2.title':'E-Commerce Stores','services.s2.desc':'Modern online stores with secure payments, fast performance, and a seamless shopping experience.',
+      'services.s3.coord':'PORTFOLIO','services.s3.title':'Portfolio Websites','services.s3.desc':'Showcase your work, projects, and achievements with a clean and professional portfolio.',
+      'services.s4.coord':'BOOKING','services.s4.title':'Booking & Service Websites','services.s4.desc':'Enable customers to book appointments, request services, and connect with your business easily.',
+      'process.eyebrow':'How a project runs','process.title':'From idea to launch.','process.desc':'Every project follows a clear process to ensure quality, performance, and a successful launch.',
+      'process.p1.title':'Discovery','process.p1.desc':'We learn about your business, goals, and target audience to understand exactly what your website needs to achieve.',
+      'process.p2.title':'Planing','process.p2.desc':'We define the website structure, user journey, and content strategy before development begins.',
+      'process.p3.title':'Design','process.p3.desc':'We create a modern, user-focused design that reflects your brand and delivers an outstanding user experience.',
+      'process.p4.title':'Development','process.p4.desc':'Your website is built using modern technologies with a focus on speed, security, and responsiveness.',
+      'process.p5.title':'Launch & Support','process.p5.desc':'After testing, your website goes live. We continue to provide support, updates, and improvements when needed.',
+      'work.eyebrow':'Selected work','work.title':'Recent builds.','work.desc':"A small set of the sites we've designed and shipped end to end.",
+      'testimonial.quote':'"A website is more than beautiful design—it\'s an investment in the future of a business. That\'s why we build websites that combine performance, reliability, and brand identity to create lasting impact."',
+      'testimonial.cite':'— Jawad Abdine, Founder of Valtiq Digital',
+      'cta.eyebrow':"Let's build your digital presence.",'cta.title':"Tell us what your business needs, and we will provide a clear plan to build a website that reflects your brand.",
+      'footer.desc':'A small studio designing and building websites for teams who care how theirs feels.','footer.col1':'Studio','footer.work':'Work','footer.services':'Services','footer.process':'Process',
+      'footer.col2':'Connect','footer.email':'Email','footer.col3':'Studio hours','footer.hours':'Mon–Fri, 9:00–18:00','footer.rights':'ALL RIGHTS RESERVED.','footer.grid':'BUILT ON A 12-COLUMN GRID.'
+    },
+    ar: {
+      'nav.work':'أعمال','nav.services':'خدمات','nav.process':'المنهجية','nav.contact':'تواصل','nav.cta':'ابدأ مشروعًا',
+      'hero.eyebrow':'استوديو تصميم وهندسة الويب','hero.title1':'من رؤية إلى-','hero.titleEm':'نجاح رقمي.',
+      'hero.lede':'تصمم Valtiq Digital وتبني مواقع إلكترونية للفرق التي تعامل موقعها كمنتج رئيسي — يُبحث، ويُخطط، ويُختبر، ويُطلق بنفس الانضباط الذي تطبقه على أي شيء آخر تضع اسمك عليه.',
+      'hero.cta1':'ابدأ مشروعًا ←','hero.cta2':'شاهد الأعمال','build.live':'مباشر','build.rendering':'عرض في الوقت الفعلي',
+      'services.eyebrow':'ماذا نقدم','services.title':'شريك واحد. كل موقع تحتاجه','services.desc':'من مواقع الشركات إلى المتاجر الإلكترونية، ومعارض الأعمال، ومنصات الحجز، نبني تجارب رقمية تساعد مشروعك على النجاح.',
+      'services.s1.coord':'مواقع الشركات','services.s1.title':'مواقع الشركات','services.s1.desc':'مواقع احترافية تعزز ثقة العملاء، تعرض خدماتك، وتمنح مشروعك حضورًا رقميًا قويًا.',
+      'services.s2.coord':'المتاجر الإلكترونية','services.s2.title':'المتاجر الإلكترونية','services.s2.desc':'متاجر إلكترونية عصرية توفر تجربة شراء سلسة، أداءً سريعًا، ووسائل دفع آمنة.',
+      'services.s3.coord':'مواقع معرض الأعمال','services.s3.title':'مواقع معرض الأعمال','services.s3.desc':'اعرض أعمالك ومشاريعك وإنجازاتك بطريقة احترافية تعكس خبرتك وتميزك.',
+      'services.s4.coord':'مواقع الحجز والخدمات','services.s4.title':'مواقع الحجز والخدمات','services.s4.desc':'سهّل على عملائك حجز المواعيد، طلب الخدمات، والتواصل معك من خلال موقع متكامل.',
+      'process.eyebrow':'كيف يسير المشروع','process.title':'من الفكرة إلى الإطلاق.','process.desc':'يمر كل مشروع بخطوات واضحة لضمان الجودة، الأداء، وإطلاق موقع احترافي.',
+      'process.p1.title':'اكتشاف','process.p1.desc':'نتعرف على مشروعك، أهدافك، والجمهور المستهدف لفهم احتياجات موقعك بدقة.',
+      'process.p2.title':'التخطيط','process.p2.desc':'نحدد هيكل الموقع، وتنظيم الصفحات، وتجربة المستخدم قبل بدء التنفيذ.',
+      'process.p3.title':'تصميم','process.p3.desc':'نصمم واجهة عصرية تعكس هوية علامتك التجارية وتوفر تجربة استخدام مميزة.',
+      'process.p4.title':'التطوير','process.p4.desc':'نبني موقعًا سريعًا، آمنًا، ومتوافقًا مع جميع الأجهزة باستخدام أحدث التقنيات.',
+      'process.p5.title':'الإطلاق والدعم','process.p5.desc':'بعد الاختبار والإطلاق، نستمر في تقديم الدعم والتحديثات لضمان أفضل أداء للموقع.',
+      'work.eyebrow':'أعمال مختارة','work.title':'أحدث الإبداعات.','work.desc':'مجموعة صغيرة من المواقع التي صممناها وأطلقناها من البداية إلى النهاية.',
+      'testimonial.quote':'"الموقع الإلكتروني ليس مجرد تصميم جميل، بل استثمار في مستقبل الأعمال. لهذا نبني مواقع تجمع بين الأداء، والموثوقية، والهوية، لتصنع أثرًا يدوم."',
+      'testimonial.cite':'— جواد عابدين، مؤسس Valtiq Digital',
+      'cta.eyebrow':'لنصنع حضورك الرقمي','cta.title':'أخبرنا بما يحتاجه عملك، وسنقدم لك خطة واضحة لبناء موقع يليق بعلامتك التجارية.',
+      'footer.desc':'استوديو صغير يصمم ويبني مواقع إلكترونية للفرق التي تهتم بمظهر وإحساس موقعها.','footer.col1':'الاستوديو','footer.work':'أعمال','footer.services':'خدمات','footer.process':'المنهجية',
+      'footer.col2':'تواصل','footer.email':'بريد إلكتروني','footer.col3':'ساعات العمل','footer.hours':'الإثنين–الجمعة، 9:00–18:00','footer.rights':'جميع الحقوق محفوظة.','footer.grid':'مبني على شبكة من 12 عمودًا.'
+    }
+  };
+
+  function switchLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.toggle('active', b.dataset.lang === lang); });
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      if (i18n[lang] && i18n[lang][el.dataset.i18n]) el.textContent = i18n[lang][el.dataset.i18n];
+    });
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+    const btn = document.querySelector('.cta-section .btn-primary');
+    if (btn) btn.innerHTML = 'CONTACT US ' + (lang === 'ar' ? '←' : '→');
+    localStorage.setItem('valtiq-lang', lang);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(b) { b.addEventListener('click', function() { switchLang(b.dataset.lang); }); });
+  const saved = localStorage.getItem('valtiq-lang');
+  if (saved && saved !== 'en') switchLang(saved);
+
+  // Intersection Observer for animations
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
